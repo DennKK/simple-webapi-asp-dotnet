@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using webapp.Api.Dto.platform;
 using webapp.Api.Service.Platform;
 
 namespace webapp.Api.Controller;
@@ -10,14 +11,18 @@ public class PlatformController(IPlatformService platformService) : ControllerBa
     [HttpGet]
     public IActionResult GetAllPlatforms()
     {
-        var platforms = platformService.GetAllPlatforms();
-        return Ok(platforms);
+        return Ok(platformService.GetAllPlatforms());
     }
 
     [HttpGet("{id:int}")]
     public IActionResult GetPlatform([FromRoute] int id)
     {
-        var platform = platformService.GetPlatform(id);
-        return Ok(platform);
+        return Ok(platformService.GetPlatform(id));
+    }
+
+    [HttpPost]
+    public IActionResult CreatePlatform([FromBody] CreatePlatformDto cretePlatformDto)
+    {
+        return Ok(platformService.CreatePlatform(cretePlatformDto));
     }
 }
