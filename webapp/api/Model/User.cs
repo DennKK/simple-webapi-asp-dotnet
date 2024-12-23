@@ -1,4 +1,4 @@
-﻿namespace webapp.api.Models;
+﻿namespace webapp.api.Model;
 
 public class User
 {

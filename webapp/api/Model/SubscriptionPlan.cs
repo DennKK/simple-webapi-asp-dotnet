@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace webapp.api.Models;
+namespace webapp.api.Model;
 
 public class SubscriptionPlan
 {
