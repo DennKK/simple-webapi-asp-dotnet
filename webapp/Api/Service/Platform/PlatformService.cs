@@ -1,16 +1,20 @@
-﻿using webapp.api.Data;
+﻿using AutoMapper;
+using webapp.Api.Data;
+using webapp.Api.Dto;
 
-namespace webapp.api.Service.Platform;
+namespace webapp.Api.Service.Platform;
 
-public class PlatformService(ApplicationDbContext dbContext) : IPlatformService
+public class PlatformService(ApplicationDbContext dbContext, IMapper mapper) : IPlatformService
 {
-    public List<Model.Platform> GetAllPlatforms()
+    public List<PlatformDto> GetAllPlatforms()
     {
-        return dbContext.Platforms.ToList();
+        var platforms = dbContext.Platforms.ToList();
+        return mapper.Map<List<PlatformDto>>(platforms);
     }
 
-    public Model.Platform GetPlatform(int id)
+    public PlatformDto GetPlatform(int id)
     {
-        return dbContext.Platforms.Find(id) ?? throw new InvalidOperationException();
+        var platform = dbContext.Platforms.Find(id) ?? throw new InvalidOperationException();
+        return mapper.Map<PlatformDto>(platform);
     }
 }
