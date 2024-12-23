@@ -1,4 +1,6 @@
-﻿namespace webapp.api.Model;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace webapp.api.Model;
 
 public class Subscription
 {
@@ -6,12 +8,12 @@ public class Subscription
     public int UserId { get; set; }
     public int ServiceId { get; set; }
     public int SubscriptionPlanId { get; set; }
-    public string Name { get; set; } = string.Empty;
+    [MaxLength(100)] public string Name { get; set; } = string.Empty;
     public DateTime StartDate { get; set; }
     public DateTime? EndDate { get; set; }
     public bool Status { get; set; }
 
     public required User User { get; set; }
-    public required Service Service { get; set; }
+    public required Platform Platform { get; set; }
     public required SubscriptionPlan SubscriptionPlan { get; set; }
 }
