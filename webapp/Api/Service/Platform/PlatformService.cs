@@ -14,7 +14,7 @@ public class PlatformService(ApplicationDbContext dbContext, IMapper mapper) : I
 
     public PlatformDto GetPlatform(int id)
     {
-        var platform = dbContext.Platforms.Find(id) ?? throw new InvalidOperationException();
+        var platform = FindPlatformById(id);
         return mapper.Map<PlatformDto>(platform);
     }
 
@@ -29,10 +29,23 @@ public class PlatformService(ApplicationDbContext dbContext, IMapper mapper) : I
 
     public PlatformDto UpdatePlatform(int id, UpdatePlatformDto updatePlatformDto)
     {
-        var platform = dbContext.Platforms.Find(id) ?? throw new InvalidOperationException();
+        var platform = FindPlatformById(id);
         mapper.Map(updatePlatformDto, platform);
         dbContext.SaveChanges();
 
         return mapper.Map<PlatformDto>(platform);
+    }
+
+    public void DeletePlatform(int id)
+    {
+        var platform = FindPlatformById(id);
+        dbContext.Platforms.Remove(platform);
+        dbContext.SaveChanges();
+    }
+
+    private Model.Platform FindPlatformById(int id)
+    {
+        return dbContext.Platforms.Find(id) ??
+               throw new InvalidOperationException($"Platform with id {id} does not exist.");
     }
 }

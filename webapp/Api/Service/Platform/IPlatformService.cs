@@ -8,4 +8,5 @@ public interface IPlatformService
     PlatformDto GetPlatform(int id);
     PlatformDto CreatePlatform(CreatePlatformDto createPlatformDto);
     PlatformDto UpdatePlatform(int id, UpdatePlatformDto updatePlatformDto);
+    void DeletePlatform(int id);
 }

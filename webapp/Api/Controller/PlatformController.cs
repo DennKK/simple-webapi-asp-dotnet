@@ -31,4 +31,11 @@ public class PlatformController(IPlatformService platformService) : ControllerBa
     {
         return Ok(platformService.UpdatePlatform(id, updatePlatformDto));
     }
+
+    [HttpDelete("{id:int}")]
+    public IActionResult DeletePlatform([FromRoute] int id)
+    {
+        platformService.DeletePlatform(id);
+        return NoContent();
+    }
 }
