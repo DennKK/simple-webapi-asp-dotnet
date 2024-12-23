@@ -1,6 +1,6 @@
-﻿using webapp.api.Service.Platform;
+﻿using webapp.Api.Service.Platform;
 
-namespace webapp.api.Service;
+namespace webapp.Api.Service;
 
 public static class ServiceCollectionExtensions
 {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using webapp.api.Service.Platform;
+using webapp.Api.Service.Platform;
 
-namespace webapp.api.Controller;
+namespace webapp.Api.Controller;
 
 [ApiController]
 [Route("api/v1/platforms")]

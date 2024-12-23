@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace webapp.api.Model;
+namespace webapp.Api.Model;
 
 public class SubscriptionPlan
 {
