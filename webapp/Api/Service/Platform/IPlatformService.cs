@@ -1,7 +1,9 @@
-﻿namespace webapp.api.Service.Platform;
+﻿using webapp.Api.Dto;
+
+namespace webapp.Api.Service.Platform;
 
 public interface IPlatformService
 {
-    List<Model.Platform> GetAllPlatforms();
-    Model.Platform GetPlatform(int id);
+    List<PlatformDto> GetAllPlatforms();
+    PlatformDto GetPlatform(int id);
 }
