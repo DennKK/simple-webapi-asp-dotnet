@@ -26,4 +26,13 @@ public class PlatformService(ApplicationDbContext dbContext, IMapper mapper) : I
 
         return mapper.Map<PlatformDto>(platform);
     }
+
+    public PlatformDto UpdatePlatform(int id, UpdatePlatformDto updatePlatformDto)
+    {
+        var platform = dbContext.Platforms.Find(id) ?? throw new InvalidOperationException();
+        mapper.Map(updatePlatformDto, platform);
+        dbContext.SaveChanges();
+
+        return mapper.Map<PlatformDto>(platform);
+    }
 }

@@ -25,4 +25,10 @@ public class PlatformController(IPlatformService platformService) : ControllerBa
     {
         return Ok(platformService.CreatePlatform(cretePlatformDto));
     }
+
+    [HttpPut("{id:int}")]
+    public IActionResult UpdatePlatform([FromRoute] int id, [FromBody] UpdatePlatformDto updatePlatformDto)
+    {
+        return Ok(platformService.UpdatePlatform(id, updatePlatformDto));
+    }
 }
