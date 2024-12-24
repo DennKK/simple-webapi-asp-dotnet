@@ -7,12 +7,16 @@ public class PlatformRepository(ApplicationDbContext dbContext) : IPlatformRepos
 {
     public async Task<List<Model.Platform>> GetAllPlatformsAsync()
     {
-        return await dbContext.Platforms.ToListAsync();
+        return await dbContext.Platforms
+            .Include(p => p.Subscriptions)
+            .ToListAsync();
     }
 
     public async Task<Model.Platform?> GetPlatformByIdAsync(int id)
     {
-        return await dbContext.Platforms.FindAsync(id);
+        return await dbContext.Platforms
+            .Include(p => p.Subscriptions)
+            .FirstOrDefaultAsync(p => p.Id == id);
     }
 
     public async Task AddPlatformAsync(Model.Platform platform)
