@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using webapp.Api.Data;
+using webapp.Api.Repository;
 using webapp.Api.Service;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddApplicationServices();
+builder.Services.AddApplicationRepositories();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
