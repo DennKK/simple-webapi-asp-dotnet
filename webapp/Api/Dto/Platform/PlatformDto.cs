@@ -1,4 +1,6 @@
-﻿namespace webapp.Api.Dto.platform;
+﻿using webapp.Api.Dto.Subscription;
+
+namespace webapp.Api.Dto.Platform;
 
 public record PlatformDto(
     int Id,

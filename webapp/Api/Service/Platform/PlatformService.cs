@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using webapp.Api.Dto.platform;
+using webapp.Api.Dto.Platform;
 using webapp.Api.Repository.Platform;
 
 namespace webapp.Api.Service.Platform;

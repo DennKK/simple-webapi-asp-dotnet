@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace webapp.Api.Dto.platform;
+namespace webapp.Api.Dto.Platform;
 
 public record UpdatePlatformDto(
     [MaxLength(32)] string Name,

@@ -1,4 +1,4 @@
-﻿using webapp.Api.Dto.platform;
+﻿using webapp.Api.Dto.Platform;
 
 namespace webapp.Api.Service.Platform;
 

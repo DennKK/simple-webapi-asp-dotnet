@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using webapp.Api.Dto.platform;
+using webapp.Api.Dto.Platform;
 using webapp.Api.Service.Platform;
 
 namespace webapp.Api.Controller;
@@ -21,9 +21,9 @@ public class PlatformController(IPlatformService platformService) : ControllerBa
     }
 
     [HttpPost]
-    public IActionResult CreatePlatform([FromBody] CreatePlatformDto cretePlatformDto)
+    public IActionResult CreatePlatform([FromBody] CreatePlatformDto createPlatformDto)
     {
-        return Ok(platformService.CreatePlatform(cretePlatformDto));
+        return Ok(platformService.CreatePlatform(createPlatformDto));
     }
 
     [HttpPut("{id:int}")]
