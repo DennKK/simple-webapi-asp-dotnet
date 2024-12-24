@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using webapp.Api.Data;
 using webapp.Api.Repository;
 using webapp.Api.Service;
@@ -11,6 +12,10 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddApplicationServices();
 builder.Services.AddApplicationRepositories();
 builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+{
+    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
