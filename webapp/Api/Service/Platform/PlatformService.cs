@@ -1,51 +1,47 @@
 ﻿using AutoMapper;
-using webapp.Api.Data;
 using webapp.Api.Dto.platform;
+using webapp.Api.Repository.Platform;
 
 namespace webapp.Api.Service.Platform;
 
-public class PlatformService(ApplicationDbContext dbContext, IMapper mapper) : IPlatformService
+public class PlatformService(IPlatformRepository repository, IMapper mapper) : IPlatformService
 {
-    public List<PlatformDto> GetAllPlatforms()
+    public async Task<List<PlatformDto>> GetAllPlatforms()
     {
-        var platforms = dbContext.Platforms.ToList();
+        var platforms = await repository.GetAllPlatformsAsync();
         return mapper.Map<List<PlatformDto>>(platforms);
     }
 
-    public PlatformDto GetPlatform(int id)
+    public async Task<PlatformDto> GetPlatform(int id)
     {
-        var platform = FindPlatformById(id);
+        var platform = await FindPlatformById(id);
         return mapper.Map<PlatformDto>(platform);
     }
 
-    public PlatformDto CreatePlatform(CreatePlatformDto createPlatformDto)
+    public async Task<PlatformDto> CreatePlatform(CreatePlatformDto createPlatformDto)
     {
         var platform = mapper.Map<Model.Platform>(createPlatformDto);
-        dbContext.Platforms.Add(platform);
-        dbContext.SaveChanges();
-
+        await repository.AddPlatformAsync(platform);
         return mapper.Map<PlatformDto>(platform);
     }
 
-    public PlatformDto UpdatePlatform(int id, UpdatePlatformDto updatePlatformDto)
+    public async Task<PlatformDto> UpdatePlatform(int id, UpdatePlatformDto updatePlatformDto)
     {
-        var platform = FindPlatformById(id);
+        var platform = await FindPlatformById(id);
         mapper.Map(updatePlatformDto, platform);
-        dbContext.SaveChanges();
-
+        await repository.UpdatePlatformAsync(platform);
         return mapper.Map<PlatformDto>(platform);
     }
 
-    public void DeletePlatform(int id)
+    public async Task DeletePlatform(int id)
     {
-        var platform = FindPlatformById(id);
-        dbContext.Platforms.Remove(platform);
-        dbContext.SaveChanges();
+        var platform = await FindPlatformById(id);
+        await repository.DeletePlatformAsync(platform);
     }
 
-    private Model.Platform FindPlatformById(int id)
+    private async Task<Model.Platform> FindPlatformById(int id)
     {
-        return dbContext.Platforms.Find(id) ??
+        return await repository.GetPlatformByIdAsync(id) ??
                throw new InvalidOperationException($"Platform with id {id} does not exist.");
     }
 }
