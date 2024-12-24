@@ -2,7 +2,7 @@
 
 namespace webapp.Api.Service;
 
-public static class ServiceCollectionExtensions
+public static class ServicesRegistration
 {
     public static void AddApplicationServices(this IServiceCollection services)
     {
