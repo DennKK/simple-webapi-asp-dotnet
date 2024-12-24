@@ -4,9 +4,9 @@ namespace webapp.Api.Service.Platform;
 
 public interface IPlatformService
 {
-    List<PlatformDto> GetAllPlatforms();
-    PlatformDto GetPlatform(int id);
-    PlatformDto CreatePlatform(CreatePlatformDto createPlatformDto);
-    PlatformDto UpdatePlatform(int id, UpdatePlatformDto updatePlatformDto);
-    void DeletePlatform(int id);
+    Task<List<PlatformDto>> GetAllPlatforms();
+    Task<PlatformDto> GetPlatform(int id);
+    Task<PlatformDto> CreatePlatform(CreatePlatformDto createPlatformDto);
+    Task<PlatformDto> UpdatePlatform(int id, UpdatePlatformDto updatePlatformDto);
+    Task DeletePlatform(int id);
 }
