@@ -4,5 +4,5 @@ public record PlatformDto(
     int Id,
     string Name,
     string Description,
-    List<SubscriptionPlanDto> SubscriptionPlans
+    List<SubscriptionDto> subscriptions
 );
