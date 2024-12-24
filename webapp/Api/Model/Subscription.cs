@@ -11,7 +11,7 @@ public class Subscription
     [Column(TypeName = "decimal(18,2")] public decimal Price { get; set; }
     public DateTime StartDate { get; set; }
     public DateTime? EndDate { get; set; }
-    public bool Status { get; set; }
+    public bool IsActive { get; set; } = true;
 
     public required Platform Platform { get; set; }
 }
